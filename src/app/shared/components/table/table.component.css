@@ -1,0 +1,82 @@
+.header > th{
+  background-color: #F8F9FA;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+}
+
+input.form-check-input{
+  cursor: pointer;
+}
+
+button{
+  font-size: .8rem !important;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px !important;
+  color: #ffff !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+}
+
+
+th, td{
+  font-size: .8rem;
+}
+
+.checkbox{
+  margin: 0 !important;
+  line-height: 30px;
+}
+
+.body-position{
+  font-size: .8rem;
+  line-height: 30px !important;
+}
+
+
+.header-hover:hover {
+  cursor: auto;
+  background-color: #F8F9FA;
+}
+
+.header:first-child > th:first-child,.header:nth-child(2)> th {
+  width: 5%;
+}
+
+.sort-icon{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.header__column{
+  width: 30%;
+}
+
+tbody > tr:hover {
+  cursor: pointer;
+}
+
+
+.form-check-input:checked{
+  background-color: var(--bg-main-aplication);
+}
+
+.active>.page-link, .page-link.active {
+  color: #E9ECEF;
+  border-color: var(--bg-main-aplication) !important;
+  background-color: var(--bg-main-aplication) !important;
+}
+
+.page-link {
+  color: black;
+}
+
+.table>:not(caption)> * >*{
+  padding: 8px 8px;
+}

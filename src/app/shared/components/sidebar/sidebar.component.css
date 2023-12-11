@@ -1,0 +1,91 @@
+.nav{
+  width: 100%;
+}
+
+.sidebar{
+  margin: 0;
+}
+
+.sidebar__item{
+  list-style: none;
+}
+
+.sidebar__link{
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.sidebar__link:hover{
+  background-color: #0000006d;
+}
+
+.sidebar__link > div {
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+}
+
+.sidebar__link > div > i {
+  margin-right: 10px;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+}
+
+.move{
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.submenu{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s ease-in-out;
+  -webkit-transition: max-height .5s ease-in-out;
+  -moz-transition: max-height .5s ease-in-out;
+  -ms-transition: max-height .5s ease-in-out;
+  -o-transition: max-height .5s ease-in-out;
+}
+
+.desplegar{
+  max-height: 500px;
+  transition: max-height .5s ease-in-out ;
+  -webkit-transition: max-height .5s ease-in-out ;
+  -moz-transition: max-height .5s ease-in-out ;
+  -ms-transition: max-height .5s ease-in-out ;
+  -o-transition: max-height .5s ease-in-out ;
+}
+
+.submenu > .sidebar__item > .sidebar__link{
+  padding-left: 25px;
+}
+
+.fa-brands{
+  font-size: 1.5rem !important;
+}

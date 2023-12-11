@@ -1,0 +1,29 @@
+.header-sidebar {
+  background-color: var(--header-bg);
+  height: 70px;
+  width: 100%;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  margin-top: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  padding: 10px;
+  color: #ffff;
+  box-shadow: -2px 9px 10px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -2px 9px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 9px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.panel-home {
+  padding: 25px;
+  background-color: var(--background-main);
+  margin-left: 220px;
+  z-index: 1;
+  overflow: auto;
+  height: calc(100vh - 70px);
+}

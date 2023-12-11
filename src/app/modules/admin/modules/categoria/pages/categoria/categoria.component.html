@@ -1,0 +1,9 @@
+<section class="container-fluid h-100 bg-white">
+  <section class="mb-1 w-100">
+    <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Agregar</button>
+  </section>
+  <section class="table-container" #containerTable >
+    <app-table [dataTableCategoria]="dataCategoria" [columnsTable]="columnCategoria"  [pageSize]="pageSize"
+    (keyUpStatus)="keyUpStatus($event)" [heigthTable]="heightContainer" ></app-table>
+  </section>
+</section>

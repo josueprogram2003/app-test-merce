@@ -1,0 +1,58 @@
+ <table class="table table-hover">
+  <thead>
+    <tr class="header">
+      <th style="padding: 12px 15px;" *ngFor="let item of columnsTable" scope="col" class="{{item.class}}" [ngClass]="{'header-hover': item.pipe}">
+        {{item.nombre.toUpperCase()}} <i class="{{item.icon}}" (click)="changeSort(item.pipe, item.aliasPipeSearch)"></i></th>
+    </tr>
+    <tr class="header">
+      <th scope="col" *ngFor="let item of columnsTable" [ngClass]="{
+        'checkbox': item.type == 'checkbox'
+      }">
+        <ng-container [ngSwitch]="item.type">
+          <input *ngSwitchCase="'checkbox'" class="{{item.classInput}} " type="{{item?.type}}"
+            (change)="checkedInputAll($event)">
+          <input *ngSwitchCase="'text'" class="{{item.classInput}} " type="{{item.type}}"
+            (keyup)="inputSearchText($event,item.searchField)">
+        </ng-container>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr scope="row" *ngFor="let data of paginatedData; let i = index">
+      <th class="body-position"><input #input class="form-check-input" type="checkbox" value="{{data}}" [checked]="verifyChecked(data)"
+          id="flexCheckDefault" (change)="checkedInput(data,$event)"></th>
+      <th class="body-position" scope="row">{{calculateIndex(i) + 1}}</th>
+      <td class="body-position">{{data.nombre.toUpperCase()}}</td>
+      <td>
+        <button type="button" class="btn btn-danger p-0 text-center">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+        <button type="button" class="btn btn-warning p-0 ">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- Paginación -->
+ <div>
+  <nav aria-label="paginador de tabla" class="d-flex justify-content-end">
+    <ul class="pagination pagination-md mb-0">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" aria-label="Previous" (click)="onPageChange(currentPage - 1)">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let pageNumber of getPages()">
+        <a class="page-link" (click)="onPageChange(pageNumber)" [class.active]="currentPage === pageNumber">
+          {{pageNumber}}
+        </a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" aria-label="Next" (click)="onPageChange(currentPage + 1)">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

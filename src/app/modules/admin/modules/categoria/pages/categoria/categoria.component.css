@@ -1,0 +1,47 @@
+section {
+  padding: 10px;
+  overflow: auto;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+section.container-fluid{
+  overflow: hidden;
+}
+
+/* ESTILOS A SCROLL BAR */
+/* estilizar Fondo de la barra del scroll*/
+ section::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Estilizar el scroll */
+ section::-webkit-scrollbar-thumb {
+  background: var(--bg-main-aplication);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+button {
+  background-color: #4E69A1 !important;
+  border-color: #4E69A1 !important;
+  font-size: 0.8rem !important;
+}
+
+.container {
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+section.table-container{
+  height: 90%;
+}

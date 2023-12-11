@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --header-bg: #FFFFFF;
+  --sidebar-bg: #4E69A1;
+  --background-main: #F4F3F8;
+  --bg-main-aplication: #4E69A1;
+}
+
+input.form-check-input{
+  width: 20px;
+  height: 20px;
+ margin-top: 5px !important;
+}
