@@ -8,6 +8,8 @@ import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderListPipe } from './pipes/order-list.pipe';
+import { ButtonDeleteComponent } from './components/buttons/button-delete/button-delete.component';
+import { ButtonUpdateComponent } from './components/buttons/button-update/button-update.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { OrderListPipe } from './pipes/order-list.pipe';
     SidebarComponent,
     TableComponent,
     OrderListPipe,
+    ButtonDeleteComponent,
+    ButtonUpdateComponent,
   ],
   imports: [
     CommonModule,

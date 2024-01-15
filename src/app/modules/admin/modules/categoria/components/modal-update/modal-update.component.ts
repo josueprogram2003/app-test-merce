@@ -1,18 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-  FormBuilder,
-  FormGroup,
-} from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Categoria } from 'src/app/core/models/categoria';
-import { CategoriaService } from '../../services/categoria.service';
-import {ErrorStateMatcher} from '@angular/material/core';
 import { StateTableService } from 'src/app/shared/services/state-table.service';
-
+import { CategoriaService } from '../../services/categoria.service';
+import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,16 +16,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 @Component({
-  selector: 'app-modal-add',
-  templateUrl: './modal-add.component.html',
-  styleUrls: ['./modal-add.component.scss']
+  selector: 'app-modal-update',
+  templateUrl: './modal-update.component.html',
+  styleUrls: ['./modal-update.component.scss']
 })
-export class ModalAddComponent implements OnInit  {
+export class ModalUpdateComponent {
   matcher = new MyErrorStateMatcher();
   formGroup: FormGroup = new FormGroup({});
   _serviceCategories = inject(CategoriaService)
   _stateTable = inject(StateTableService);
-  constructor(private formBuilder: FormBuilder, private toastr: ToastrService){
+  constructor(private formBuilder: FormBuilder, private toastr: ToastrService,private modalService: NgbModal){
 
   }
 
@@ -41,6 +34,19 @@ export class ModalAddComponent implements OnInit  {
   }
 
   public initializeForm(){
+    this._stateTable.statusUpdateTable.subscribe((data:any)=>{
+      console.log(data)
+      const modalRef = this.modalService.open(ModalUpdateComponent);
+    // Puedes realizar algunas acciones después de que el nuevo modal se haya abierto, si es necesario
+      modalRef.result.then(
+        (result:any) => {
+          console.log(`Nuevo modal cerrado con resultado: ${result}`);
+        },
+        (reason:any) => {
+          console.log(`Nuevo modal cerrado con razón: ${reason}`);
+        }
+      );
+    });
     const categoria = new Categoria(null,'');
     this.formGroup =new FormGroup({
       id: new FormControl(categoria.id),
@@ -79,7 +85,5 @@ export class ModalAddComponent implements OnInit  {
       progressBar:true
     });
   }
-
-
 
 }

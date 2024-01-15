@@ -1,8 +1,9 @@
- <table class="table table-hover">
+<table class="table table-hover">
   <thead>
     <tr class="header">
-      <th style="padding: 12px 15px;" *ngFor="let item of columnsTable" scope="col" class="{{item.class}}" [ngClass]="{'header-hover': item.pipe}">
-        {{item.nombre.toUpperCase()}} <i class="{{item.icon}}" (click)="changeSort(item.pipe, item.aliasPipeSearch)"></i></th>
+      <th style="padding: 12px 15px;" *ngFor="let item of columnsTable" scope="col" class="{{item.class}}"
+        [ngClass]="{'header-hover': item.pipe}" (click)="changeSort(item.pipe, item.aliasPipeSearch)">
+        {{item.nombre.toUpperCase()}} <i class="{{item.icon}}"></i></th>
     </tr>
     <tr class="header">
       <th scope="col" *ngFor="let item of columnsTable" [ngClass]="{
@@ -18,24 +19,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr scope="row" *ngFor="let data of paginatedData; let i = index">
-      <th class="body-position"><input #input class="form-check-input" type="checkbox" value="{{data}}" [checked]="verifyChecked(data)"
-          id="flexCheckDefault" (change)="checkedInput(data,$event)"></th>
-      <th class="body-position" scope="row">{{calculateIndex(i) + 1}}</th>
+    <tr scope="row" *ngFor="let data of paginatedData; let i = index" (click)="clickRow(data,$event)">
+      <td  *ngIf="checkbox" class="body-position"><input #input class="form-check-input" type="checkbox" value="{{data}}"
+          [checked]="verifyChecked(data)" id="flexCheckDefault" (change)="checkedInput(data,$event)"></td>
+      <td class="body-position" scope="row">{{calculateIndex(i) + 1}}</td>
       <td class="body-position">{{data.nombre.toUpperCase()}}</td>
       <td>
-        <button type="button" class="btn btn-danger p-0 text-center">
+        <button type="button" class="btn btn-danger p-0 text-center" title="Eliminar" (click)="eliminar(data)">
           <i class="fa-solid fa-trash"></i>
         </button>
-        <button type="button" class="btn btn-warning p-0 ">
+        <button type="button" class="btn btn-warning p-0 " title="Actualizar" (click)="update(data)">
           <i class="fa-solid fa-pen-to-square"></i>
         </button>
       </td>
     </tr>
   </tbody>
 </table>
+
 <!-- Paginación -->
- <div>
+<div>
   <nav aria-label="paginador de tabla" class="d-flex justify-content-end">
     <ul class="pagination pagination-md mb-0">
       <li class="page-item" [class.disabled]="currentPage === 1">

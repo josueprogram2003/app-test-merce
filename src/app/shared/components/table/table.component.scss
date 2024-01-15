@@ -39,11 +39,14 @@ th, td{
   line-height: 30px !important;
 }
 
+.header-hover{
+   cursor: pointer !important;
+}
 
 .header-hover:hover {
-  cursor: auto;
-  background-color: #F8F9FA;
+  background-color: #F8F9FA !important;
 }
+
 
 .header:first-child > th:first-child,.header:nth-child(2)> th {
   width: 5%;
@@ -75,6 +78,7 @@ tbody > tr:hover {
 
 .page-link {
   color: black;
+  cursor: pointer;
 }
 
 .table>:not(caption)> * >*{

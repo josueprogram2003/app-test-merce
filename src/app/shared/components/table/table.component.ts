@@ -13,11 +13,13 @@ import {
   Categoria
 } from 'src/app/core/models/categoria';
 import { OrderListPipe } from '../../pipes/order-list.pipe';
+import { ToastrService } from 'ngx-toastr';
+import { StateTableService } from '../../services/state-table.service';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit  {
   selectedChecked: Categoria[] = [];
@@ -42,8 +44,9 @@ export class TableComponent implements OnInit  {
   set heigthTable(value: number) {
     this.height = value;
   }
+  @Input() checkbox :boolean = false;
 
-  constructor(private orderListPipe: OrderListPipe){
+  constructor(private orderListPipe: OrderListPipe, private _stateService: StateTableService){
 
   }
 
@@ -90,14 +93,34 @@ export class TableComponent implements OnInit  {
 
   checkedInput(data: Categoria,$event:Event) {
     let inputSelectedNow = $event.target as HTMLInputElement;
-    if (!inputSelectedNow.checked) {
+    if (inputSelectedNow.checked) {
+      inputSelectedNow.checked = false;
       this.selectedChecked = this.selectedChecked.filter(objeto => objeto.id !== data.id)
-      //  console.log(this.selectedChecked)
+       console.log(this.selectedChecked)
     } else {
+      inputSelectedNow.checked = true;
       this.selectedChecked.push(data);
-      //  console.log(this.selectedChecked)
+       console.log(this.selectedChecked)
     }
   }
+
+  clickRow(data:Categoria, $event:Event){
+    if (this.checkbox) {
+      const element = $event.target as HTMLElement;
+      const checked = element.closest('tr')?.querySelector('input[type="checkbox"]') as HTMLInputElement;
+      if (checked.checked) {
+        checked.checked = false;
+        this.selectedChecked = this.selectedChecked.filter(objeto => objeto.id !== data.id)
+      //  console.log(this.selectedChecked)
+      } else {
+        checked.checked = true;
+        this.selectedChecked.push(data);
+      //  console.log(this.selectedChecked)
+      }
+    }
+
+  }
+
 
   // checked del input general
   checkedInputAll($event:Event){
@@ -139,12 +162,34 @@ export class TableComponent implements OnInit  {
   }
   // pipes
   changeSort(pipe:boolean, alias:string){
-      console.log(pipe, alias)
+      // console.log(pipe, alias)
       if (pipe) {
         this.dataTable = this.orderListPipe.transform(this.dataTable, this.ordenPipe);
         this.ordenPipe = this.ordenPipe == 'asc'  ? 'desc' : 'asc'
       }
   }
+
+  // actions
+
+  public eliminar(data: Categoria){
+    const  send = {
+      status: true,
+      dataSend:data
+    }
+      this.selectedChecked = this.selectedChecked.filter(objeto => objeto.id !== data.id)
+       console.log(this.selectedChecked)
+    this._stateService.statusDeleteTable.next(send);
+  }
+
+  public update(data:Categoria){
+    const send = {
+      status: true,
+      dataSend:data
+    }
+    this._stateService.statusUpdateTable.next(send);
+  }
+
+
 
 
 

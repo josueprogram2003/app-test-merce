@@ -1,9 +1,18 @@
 <section class="container-fluid h-100 bg-white">
-  <section class="mb-1 w-100">
-    <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Agregar</button>
+  <section class="mb-1 w-100 d-flex justify-content-between ">
+    <button mat-raised-button class="btn btn--add" data-bs-toggle="modal" data-bs-target="#addCategoria"
+      title="Agregar"><i class="fa-solid fa-plus"></i></button>
+    <button  class="btn btn--recargar" (click)="loadDataUpdate()"
+      title="Recargar"><i class="fa-solid fa-spinner"></i></button>
   </section>
-  <section class="table-container" #containerTable >
+  <section class="table-container" #containerTable>
+    <div class="text-center" *ngIf="status">
+      <div class="spinner-border text-color" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <app-table [dataTableCategoria]="dataCategoria" [columnsTable]="columnCategoria"  [pageSize]="pageSize"
-    (keyUpStatus)="keyUpStatus($event)" [heigthTable]="heightContainer" ></app-table>
+      (keyUpStatus)="keyUpStatus($event)" [heigthTable]="heightContainer"></app-table>
   </section>
 </section>
+<app-modal-add></app-modal-add>

@@ -1,0 +1,89 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$ecommerce-primary: mat.define-palette(mat.$indigo-palette);
+$ecommerce-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$ecommerce-warn: mat.define-palette(mat.$red-palette);
+
+$ecommerce-theme: mat.define-light-theme((
+  color: (
+    primary: $ecommerce-primary,
+    accent: $ecommerce-accent,
+    warn: $ecommerce-warn,
+  )
+));
+
+@include mat.all-component-themes($ecommerce-theme);
+
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root{
+  --size-labels-form:14px;
+  --color-labels: #3D3E41;
+  --color-text:#ffff;
+  --header-bg: #FFFFFF;
+  --sidebar-bg: #5080F4;
+  --background-main: #F4F3F8;
+  --bg-main-aplication: #5080F4;
+  --bg-button-delete:#F44A3E;
+  --bg-button-recargar:#E5DBFF;
+}
+
+input.form-check-input{
+  width: 20px;
+  height: 20px;
+ margin-top: 5px !important;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.form-label{
+  font-weight: 500;
+  color: var(--color-labels);
+}
+
+p{
+  margin-bottom: 0px !important;
+}
+
+mat-error > div.alert-danger > p, .form-label{
+  margin-left: 5px;
+  font-size: var(--size-labels-form);
+}
+
+
+.alert-danger{
+  background-color: #F8D7DA;
+  padding: 5px 8px;
+}
+
+
+.btn--add{
+  background-color: var(--bg-main-aplication) !important;
+}
+
+.btn--delete{
+  background-color: var(--bg-button-delete) !important;
+}
+
+.btn--add, .btn--delete{
+    color: var(--color-text) !important;
+}
+
+.btn--recargar{
+  background-color: var( --bg-button-recargar) !important;
+  color: var(--color-text) !important;
+}

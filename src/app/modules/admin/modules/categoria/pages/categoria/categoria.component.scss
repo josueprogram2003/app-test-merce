@@ -28,8 +28,6 @@ section.container-fluid{
 }
 
 button {
-  background-color: #4E69A1 !important;
-  border-color: #4E69A1 !important;
   font-size: 0.8rem !important;
 }
 
@@ -44,4 +42,9 @@ button {
 
 section.table-container{
   height: 90%;
+}
+
+
+.text-color{
+  color: var(--bg-main-aplication);
 }
